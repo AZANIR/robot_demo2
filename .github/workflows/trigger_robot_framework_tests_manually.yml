@@ -1,0 +1,55 @@
+# run tests manually in the Actions-tab of the project
+name: Trigger Tests Manually
+on:
+    workflow_dispatch:
+        # Inputs the workflow accepts.
+        inputs:
+            tag:
+                description: 'Tag for tests to run. Use "*" to run all'
+                # Default value if no value is explicitly provided
+                default: "*"
+                # Input has to be provided for the workflow to run
+                required: true
+jobs:
+    run_tests:
+        runs-on: ubuntu-latest
+        steps:
+            # checkout code from a repository
+            - uses: actions/checkout@v2
+
+            # create folder for test reports
+            - name: Create folder for reports
+              run: mkdir reports
+
+            - name: Copy redirect to reports
+              run: cp helpers/404.html reports/404.html
+
+            - name: Set up Python 3.9
+              uses: actions/setup-python@v2
+              with:
+                  python-version: 3.9
+            - name: Install dependencies
+              run: |
+                  python -m pip install --upgrade pip
+            #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - run: bash setup_venv.sh
+
+            # run Robot Framework tests inside Docker container
+            - name: Run Robot Framework Tests
+              run: venv/bin/python -m robot -d reports/ tests/
+
+            - name: Upload reports
+              uses: actions/upload-artifact@v1
+              if: always()
+              with:
+                  name: reports
+                  # set path to Robot Framework results reports. Exclude dummy file that is needed because of ppodgorsek image priviledges.
+                  path: ${{ github.workspace }}/reports
+
+            - name: Deploy to pages
+              if: always()
+              uses: peaceiris/actions-gh-pages@v3.7.3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_branch: gh-pages
+                  publish_dir: reports

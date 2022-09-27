@@ -1,0 +1,8 @@
+MGS_URL="https://simulation-gateway.stage.commandcentral.com"
+CHE_URL= "https://simulation-psap.stage.commandcentral.com"
+MGS_CALL_PROFILE_NAME = "NGCS Lab - Traffic"
+MGS_CALL_PROFILE_ID = "62daedf64b1d976e096e2641"
+MGS_CONFIGURATION_NAME = "QUB20 - NGCS Lab"
+MGS_CONFIGURATION_ID = "621fc1b1ecb0a83aeb978d25"
+SIP_ENDPOINT_ID = "32c6ccd0-dd72-413b-a8e3-6801136f54b4"
+TOKEN=""

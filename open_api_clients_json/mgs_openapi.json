@@ -1,0 +1,2069 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "mgs",
+    "version": "22.0.65"
+  },
+  "servers": [
+    {
+      "url": "https://simulation-gateway.stage.commandcentral.com",
+      "description": "MGS - Stage Environment"
+    }
+  ],
+  "paths": {
+    "/control/v2-beta/traffic-profiles/{trafficProfileId}": {
+      "get": {
+        "tags": [
+          "traffic-profile-rest-controller"
+        ],
+        "operationId": "getTrafficProfile",
+        "parameters": [
+          {
+            "name": "trafficProfileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficProfile"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "traffic-profile-rest-controller"
+        ],
+        "operationId": "updateTrafficProfile",
+        "parameters": [
+          {
+            "name": "trafficProfileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrafficProfile"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficProfile"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "traffic-profile-rest-controller"
+        ],
+        "operationId": "deleteTrafficProfile",
+        "parameters": [
+          {
+            "name": "trafficProfileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/call-generation-profiles/{profileId}": {
+      "get": {
+        "tags": [
+          "call-generation-profile-rest-controller"
+        ],
+        "operationId": "getCallProfile",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallGenerationProfile"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "call-generation-profile-rest-controller"
+        ],
+        "operationId": "updateCallProfile",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallGenerationProfile"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallGenerationProfile"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "call-generation-profile-rest-controller"
+        ],
+        "operationId": "deleteCallProfile",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/traffic-runs": {
+      "get": {
+        "tags": [
+          "traffic-rest-controller"
+        ],
+        "operationId": "getAllTrafficStates",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TrafficExtendedState"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "traffic-rest-controller"
+        ],
+        "operationId": "createTraffic",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartTrafficRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficExtendedState"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "traffic-rest-controller"
+        ],
+        "operationId": "deleteAllTraffics",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/traffic-runs/{trafficId}/end": {
+      "post": {
+        "tags": [
+          "traffic-rest-controller"
+        ],
+        "operationId": "endTraffic",
+        "parameters": [
+          {
+            "name": "trafficId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficExtendedState"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/control/v2-beta/traffic-profiles": {
+      "get": {
+        "tags": [
+          "traffic-profile-rest-controller"
+        ],
+        "operationId": "getAllTrafficProfiles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TrafficProfile"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "traffic-profile-rest-controller"
+        ],
+        "operationId": "createTrafficProfile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrafficProfile"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficProfile"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "traffic-profile-rest-controller"
+        ],
+        "operationId": "deleteAllTrafficProfiles",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/mgs-configurations": {
+      "get": {
+        "tags": [
+          "mgs-configuration-rest-controller"
+        ],
+        "operationId": "getAllMGSConfigurations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MGSConfiguration"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "mgs-configuration-rest-controller"
+        ],
+        "operationId": "createMGSConfiguration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MGSConfiguration"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MGSConfiguration"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "mgs-configuration-rest-controller"
+        ],
+        "operationId": "deleteAllMGSConfigurations",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/calls/{callId}/end": {
+      "post": {
+        "tags": [
+          "call-rest-controller"
+        ],
+        "operationId": "callTermination_1",
+        "parameters": [
+          {
+            "name": "callId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/calls/start": {
+      "post": {
+        "tags": [
+          "call-rest-controller"
+        ],
+        "operationId": "createCall_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartCallRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallExtendedStateV2"
+                }
+              },
+              "application/callextendedstate.v2+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallExtendedStateV2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/control/v2-beta/call-generation-profiles": {
+      "get": {
+        "tags": [
+          "call-generation-profile-rest-controller"
+        ],
+        "operationId": "getAllCallProfiles",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallGenerationProfile"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "call-generation-profile-rest-controller"
+        ],
+        "operationId": "createCallProfile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallGenerationProfile"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallGenerationProfile"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "call-generation-profile-rest-controller"
+        ],
+        "operationId": "deleteAllCallProfiles",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/mgs-configurations/{simulatorInstanceId}": {
+      "get": {
+        "tags": [
+          "mgs-configuration-rest-controller"
+        ],
+        "operationId": "getMGSConfiguration",
+        "parameters": [
+          {
+            "name": "simulatorInstanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MGSConfiguration"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "mgs-configuration-rest-controller"
+        ],
+        "operationId": "deleteMGSConfiguration",
+        "parameters": [
+          {
+            "name": "simulatorInstanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "mgs-configuration-rest-controller"
+        ],
+        "operationId": "updateMGSConfiguration",
+        "parameters": [
+          {
+            "name": "simulatorInstanceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MGSConfiguration"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/MGSConfiguration"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/credits": {
+      "get": {
+        "tags": [
+          "simulation-credits-rest-controller"
+        ],
+        "operationId": "getCreditsPage",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/traffic-runs/{trafficId}": {
+      "get": {
+        "tags": [
+          "traffic-rest-controller"
+        ],
+        "operationId": "getTrafficState",
+        "parameters": [
+          {
+            "name": "trafficId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficExtendedState"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "traffic-rest-controller"
+        ],
+        "operationId": "deleteTraffic",
+        "parameters": [
+          {
+            "name": "trafficId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/traffic-runs/{trafficId}/calls": {
+      "get": {
+        "tags": [
+          "traffic-rest-controller"
+        ],
+        "operationId": "getAllTrafficCalls",
+        "parameters": [
+          {
+            "name": "trafficId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallExtendedStateV2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/control/v2-beta/traffic-runs/calls": {
+      "get": {
+        "tags": [
+          "traffic-rest-controller"
+        ],
+        "operationId": "getAllTrafficCalls_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallExtendedStateV2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/control/v2-beta/info": {
+      "get": {
+        "tags": [
+          "info-rest-controller"
+        ],
+        "operationId": "getInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/InfoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/control/v2-beta/calls": {
+      "get": {
+        "tags": [
+          "call-rest-controller"
+        ],
+        "operationId": "callStatusAll_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallExtendedStateV2"
+                  }
+                }
+              },
+              "application/callextendedstate.v2+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallExtendedStateV2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "call-rest-controller"
+        ],
+        "operationId": "deleteCalls",
+        "parameters": [
+          {
+            "name": "selection",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "terminated"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/calls/{callId}": {
+      "get": {
+        "tags": [
+          "call-rest-controller"
+        ],
+        "operationId": "callStatus_1",
+        "parameters": [
+          {
+            "name": "callId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallExtendedStateV2"
+                }
+              },
+              "application/callextendedstate.v2+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CallExtendedStateV2"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "call-rest-controller"
+        ],
+        "operationId": "deleteCall",
+        "parameters": [
+          {
+            "name": "callId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/control/v2-beta/audio-files": {
+      "get": {
+        "tags": [
+          "audio-file-rest-controller"
+        ],
+        "operationId": "getAllAudioFileNames",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MediaFile"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BurstTrafficProfileConfiguration": {
+        "type": "object"
+      },
+      "LinearRateTrafficProfileConfiguration": {
+        "type": "object",
+        "properties": {
+          "numberOfCallsPerHour": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "TrafficProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "profileConfiguration": {
+            "$ref": "#/components/schemas/TrafficProfileConfiguration"
+          }
+        }
+      },
+      "TrafficProfileConfiguration": {
+        "type": "object",
+        "properties": {
+          "callGenerationProfileId": {
+            "type": "string"
+          },
+          "trafficRunDurationInSeconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "callDurationInSeconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trafficProfileType": {
+            "$ref": "#/components/schemas/TrafficProfileType"
+          },
+          "linearRateTrafficProfileConfiguration": {
+            "$ref": "#/components/schemas/LinearRateTrafficProfileConfiguration"
+          },
+          "burstTrafficProfileConfiguration": {
+            "$ref": "#/components/schemas/BurstTrafficProfileConfiguration"
+          }
+        }
+      },
+      "TrafficProfileType": {
+        "type": "string",
+        "enum": [
+          "LINEAR",
+          "BURST"
+        ]
+      },
+      "CallGenerationProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "profileConfiguration": {
+            "$ref": "#/components/schemas/CallProfileConfiguration"
+          }
+        }
+      },
+      "CallInfoHeader": {
+        "type": "object",
+        "properties": {
+          "callInfoHeaderType": {
+            "type": "string",
+            "enum": [
+              "SERVICE_INFO",
+              "PROVIDER_INFO",
+              "SUBSCRIBER_INFO",
+              "DEVICE_INFO",
+              "COMMENT"
+            ]
+          },
+          "dataTransmissionMode": {
+            "type": "string",
+            "enum": [
+              "BY_REFERENCE",
+              "BY_VALUE"
+            ]
+          },
+          "headerValue": {
+            "type": "string"
+          },
+          "mimeContentMode": {
+            "type": "string",
+            "enum": [
+              "NORMAL",
+              "EMPTY",
+              "MISSING"
+            ]
+          },
+          "mimeContent": {
+            "type": "string"
+          }
+        }
+      },
+      "CallInformationHeaderConfiguration": {
+        "type": "object",
+        "properties": {
+          "callInfoHeaderFormat": {
+            "type": "string",
+            "enum": [
+              "SINGLE_HEADER",
+              "ONE_HEADER_PER_VALUE"
+            ]
+          },
+          "callInfoHeaderList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CallInfoHeader"
+            }
+          }
+        }
+      },
+      "CallProfileConfiguration": {
+        "type": "object",
+        "properties": {
+          "gatewayProfileType": {
+            "$ref": "#/components/schemas/GatewayProfileType"
+          },
+          "routerNenaE911Configuration": {
+            "$ref": "#/components/schemas/RouterNenaE911ProfileConfiguration"
+          },
+          "routerMsiCcrouterV1Configuration": {
+            "$ref": "#/components/schemas/RouterMsiCcrouterV1ProfileConfiguration"
+          },
+          "ospVerizonNycE911V27Configuration": {
+            "$ref": "#/components/schemas/OspVerizonNycE911V27ProfileConfiguration"
+          },
+          "ospVerizonNycAtisV2_5ProfileConfiguration": {
+            "$ref": "#/components/schemas/OspVerizonNycAtisV2_5ProfileConfiguration"
+          }
+        }
+      },
+      "CallerIdentificationAutomaticConfiguration": {
+        "type": "object",
+        "properties": {
+          "telephoneNumberTemplate": {
+            "type": "string"
+          },
+          "minRange": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxRange": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "INCREMENT",
+              "RANDOM"
+            ]
+          }
+        }
+      },
+      "CustomSipHeader": {
+        "type": "object",
+        "properties": {
+          "headerName": {
+            "type": "string"
+          },
+          "headerValue": {
+            "type": "string"
+          }
+        }
+      },
+      "GatewayProfileType": {
+        "type": "string",
+        "enum": [
+          "ROUTER_NENA_E911",
+          "ROUTER_MSI_CCROUTER_V1",
+          "OSP_VERIZON_NYC_E911_V2_7",
+          "OSP_VERIZON_NYC_ATIS_V2_5"
+        ]
+      },
+      "GeolocationHeader": {
+        "type": "object",
+        "properties": {
+          "dataTransmissionMode": {
+            "type": "string",
+            "enum": [
+              "BY_REFERENCE",
+              "BY_VALUE"
+            ]
+          },
+          "headerValue": {
+            "type": "string"
+          },
+          "mimeContentMode": {
+            "type": "string",
+            "enum": [
+              "NORMAL",
+              "EMPTY",
+              "MISSING"
+            ]
+          },
+          "mimeContent": {
+            "type": "string"
+          }
+        }
+      },
+      "GeolocationHeaderConfiguration": {
+        "type": "object",
+        "properties": {
+          "geolocationHeaderFormat": {
+            "type": "string",
+            "enum": [
+              "SINGLE_HEADER",
+              "ONE_HEADER_PER_VALUE"
+            ]
+          },
+          "geolocationHeaderList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeolocationHeader"
+            }
+          }
+        }
+      },
+      "MediaFile": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string"
+          },
+          "catalogSubtype": {
+            "type": "string",
+            "enum": [
+              "AUDIO",
+              "VIDEO"
+            ]
+          }
+        }
+      },
+      "MsiCcrouterV1CallInformationConfiguration": {
+        "type": "object",
+        "properties": {
+          "geolocationHeaderFormat": {
+            "type": "string",
+            "enum": [
+              "SINGLE_HEADER",
+              "ONE_HEADER_PER_VALUE"
+            ]
+          },
+          "geolocationHeaderValues": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "callInfoHeaderProviderInfo": {
+            "type": "string"
+          },
+          "callInfoHeaderServiceInfo": {
+            "type": "string"
+          },
+          "callInfoHeaderSubscriberInfoEnabled": {
+            "type": "boolean"
+          },
+          "callInfoHeaderSubscriberInfo": {
+            "type": "string"
+          },
+          "callInfoHeaderDeviceInfoEnabled": {
+            "type": "boolean"
+          },
+          "callInfoHeaderDeviceInfo": {
+            "type": "string"
+          },
+          "callInfoHeaderCommentEnabled": {
+            "type": "boolean"
+          },
+          "callInfoHeaderComment": {
+            "type": "string"
+          }
+        }
+      },
+      "MsiCcrouterV1CallerIdentificationConfiguration": {
+        "type": "object",
+        "properties": {
+          "aniConfigurationMode": {
+            "type": "string",
+            "enum": [
+              "MANUAL",
+              "AUTOMATIC"
+            ]
+          },
+          "aniManual": {
+            "type": "string"
+          },
+          "aniAutomatic": {
+            "$ref": "#/components/schemas/CallerIdentificationAutomaticConfiguration"
+          }
+        }
+      },
+      "MsiCcrouterV1CustomSipHeaderConfiguration": {
+        "type": "object",
+        "properties": {
+          "customSipHeaderList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomSipHeader"
+            }
+          }
+        }
+      },
+      "MsiCcrouterV1MediaConfiguration": {
+        "type": "object",
+        "properties": {
+          "voiceEnabled": {
+            "type": "boolean"
+          },
+          "mediaFile": {
+            "$ref": "#/components/schemas/MediaFile"
+          }
+        }
+      },
+      "MsiCcrouterV1RoutingConfiguration": {
+        "type": "object",
+        "properties": {
+          "outboundProxyUriEnabled": {
+            "type": "boolean"
+          },
+          "outboundProxyUri": {
+            "type": "string"
+          },
+          "toUri": {
+            "type": "string"
+          },
+          "routeUri": {
+            "type": "string"
+          },
+          "routeSet": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "MsiCcrouterV1TransportConfiguration": {
+        "type": "object",
+        "properties": {
+          "protocol": {
+            "type": "string",
+            "enum": [
+              "UDP",
+              "TCP",
+              "TLS"
+            ]
+          }
+        }
+      },
+      "NenaE911CallInformationConfiguration": {
+        "type": "object"
+      },
+      "NenaE911CallerIdentificationConfiguration": {
+        "type": "object",
+        "properties": {
+          "aniConfigurationMode": {
+            "type": "string",
+            "enum": [
+              "MANUAL",
+              "AUTOMATIC"
+            ]
+          },
+          "aniManual": {
+            "type": "string"
+          },
+          "aniAutomatic": {
+            "$ref": "#/components/schemas/CallerIdentificationAutomaticConfiguration"
+          }
+        }
+      },
+      "NenaE911MediaConfiguration": {
+        "type": "object",
+        "properties": {
+          "voiceEnabled": {
+            "type": "boolean"
+          },
+          "mediaFile": {
+            "$ref": "#/components/schemas/MediaFile"
+          }
+        }
+      },
+      "NenaE911RoutingConfiguration": {
+        "type": "object",
+        "properties": {
+          "requestUri": {
+            "type": "string"
+          }
+        }
+      },
+      "NenaE911TransportConfiguration": {
+        "type": "object",
+        "properties": {
+          "protocol": {
+            "type": "string",
+            "enum": [
+              "UDP",
+              "TCP",
+              "TLS"
+            ]
+          }
+        }
+      },
+      "OspVerizonNycAtisV2_5ProfileConfiguration": {
+        "type": "object",
+        "properties": {
+          "lineType": {
+            "type": "string",
+            "enum": [
+              "WIRELESS",
+              "WIRELINE"
+            ]
+          },
+          "callerIdentificationConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycAtisV2_5CallerIdentificationConfiguration"
+          },
+          "calleeIdentificationConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycAtisV2_5CalleeIdentificationConfiguration"
+          },
+          "routingConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycAtisV2_5RoutingConfiguration"
+          },
+          "callInformationConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycAtisV2_5CallInformationConfiguration"
+          },
+          "transportConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycAtisV2_5TransportConfiguration"
+          },
+          "mediaConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycAtisV2_5MediaConfiguration"
+          }
+        }
+      },
+      "OspVerizonNycE911V27ProfileConfiguration": {
+        "type": "object",
+        "properties": {
+          "calleeIdentificationConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycE911V27CalleeIdentificationConfiguration"
+          },
+          "callerIdentificationConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycE911V27CallerIdentificationConfiguration"
+          },
+          "mediaConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycE911V27MediaConfiguration"
+          },
+          "routingConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycE911V27RoutingConfiguration"
+          },
+          "transportConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycE911V27TransportConfiguration"
+          }
+        }
+      },
+      "RouterMsiCcrouterV1ProfileConfiguration": {
+        "type": "object",
+        "properties": {
+          "callerIdentificationConfiguration": {
+            "$ref": "#/components/schemas/MsiCcrouterV1CallerIdentificationConfiguration"
+          },
+          "routingConfiguration": {
+            "$ref": "#/components/schemas/MsiCcrouterV1RoutingConfiguration"
+          },
+          "transportConfiguration": {
+            "$ref": "#/components/schemas/MsiCcrouterV1TransportConfiguration"
+          },
+          "callInformationConfiguration": {
+            "$ref": "#/components/schemas/MsiCcrouterV1CallInformationConfiguration"
+          },
+          "customSipHeaderConfiguration": {
+            "$ref": "#/components/schemas/MsiCcrouterV1CustomSipHeaderConfiguration"
+          },
+          "mediaConfiguration": {
+            "$ref": "#/components/schemas/MsiCcrouterV1MediaConfiguration"
+          }
+        }
+      },
+      "RouterNenaE911ProfileConfiguration": {
+        "type": "object",
+        "properties": {
+          "callerIdentificationConfiguration": {
+            "$ref": "#/components/schemas/NenaE911CallerIdentificationConfiguration"
+          },
+          "routingConfiguration": {
+            "$ref": "#/components/schemas/NenaE911RoutingConfiguration"
+          },
+          "transportConfiguration": {
+            "$ref": "#/components/schemas/NenaE911TransportConfiguration"
+          },
+          "callInformationConfiguration": {
+            "$ref": "#/components/schemas/NenaE911CallInformationConfiguration"
+          },
+          "mediaConfiguration": {
+            "$ref": "#/components/schemas/NenaE911MediaConfiguration"
+          }
+        }
+      },
+      "TelephoneNumberGenerationConfiguration": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "MANUAL",
+              "SEQUENTIAL",
+              "RANDOM"
+            ]
+          },
+          "template": {
+            "type": "string"
+          },
+          "minRange": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxRange": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "VerizonNycAtisV2_5CallInformationConfiguration": {
+        "type": "object",
+        "properties": {
+          "geolocationHeaderConfiguration": {
+            "$ref": "#/components/schemas/GeolocationHeaderConfiguration"
+          },
+          "callInformationHeaderConfiguration": {
+            "$ref": "#/components/schemas/CallInformationHeaderConfiguration"
+          }
+        }
+      },
+      "VerizonNycAtisV2_5CalleeIdentificationConfiguration": {
+        "type": "object",
+        "properties": {
+          "toUri": {
+            "type": "string"
+          }
+        }
+      },
+      "VerizonNycAtisV2_5CallerIdentificationConfiguration": {
+        "type": "object",
+        "properties": {
+          "wirelessConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycAtisV2_5CallerIdentificationWirelessConfiguration"
+          },
+          "wirelineConfiguration": {
+            "$ref": "#/components/schemas/VerizonNycAtisV2_5CallerIdentificationWirelineConfiguration"
+          }
+        }
+      },
+      "VerizonNycAtisV2_5CallerIdentificationWirelessConfiguration": {
+        "type": "object",
+        "properties": {
+          "pseudoANINumberConfiguration": {
+            "$ref": "#/components/schemas/TelephoneNumberGenerationConfiguration"
+          },
+          "callBackNumberConfiguration": {
+            "$ref": "#/components/schemas/TelephoneNumberGenerationConfiguration"
+          }
+        }
+      },
+      "VerizonNycAtisV2_5CallerIdentificationWirelineConfiguration": {
+        "type": "object",
+        "properties": {
+          "aniNumberConfiguration": {
+            "$ref": "#/components/schemas/TelephoneNumberGenerationConfiguration"
+          }
+        }
+      },
+      "VerizonNycAtisV2_5MediaConfiguration": {
+        "type": "object",
+        "properties": {
+          "voiceEnabled": {
+            "type": "boolean"
+          },
+          "mediaFile": {
+            "$ref": "#/components/schemas/MediaFile"
+          }
+        }
+      },
+      "VerizonNycAtisV2_5RoutingConfiguration": {
+        "type": "object",
+        "properties": {
+          "requestUri": {
+            "type": "string"
+          },
+          "routeSet": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "VerizonNycAtisV2_5TransportConfiguration": {
+        "type": "object",
+        "properties": {
+          "protocol": {
+            "type": "string",
+            "enum": [
+              "UDP",
+              "TCP"
+            ]
+          }
+        }
+      },
+      "VerizonNycE911V27CalleeIdentificationConfiguration": {
+        "type": "object"
+      },
+      "VerizonNycE911V27CallerIdentificationConfiguration": {
+        "type": "object"
+      },
+      "VerizonNycE911V27MediaConfiguration": {
+        "type": "object"
+      },
+      "VerizonNycE911V27RoutingConfiguration": {
+        "type": "object"
+      },
+      "VerizonNycE911V27TransportConfiguration": {
+        "type": "object"
+      },
+      "StartTrafficRequest": {
+        "type": "object",
+        "properties": {
+          "simulatorInstanceId": {
+            "type": "string"
+          },
+          "trafficProfileId": {
+            "type": "string"
+          }
+        }
+      },
+      "BurstTrafficParameters": {
+        "type": "object"
+      },
+      "LinearRateTrafficParameters": {
+        "type": "object",
+        "properties": {
+          "numberOfCallsPerHour": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "TrafficExtendedState": {
+        "type": "object",
+        "properties": {
+          "trafficId": {
+            "type": "string"
+          },
+          "simulatorInstanceId": {
+            "type": "string"
+          },
+          "trafficState": {
+            "type": "string",
+            "enum": [
+              "CREATED",
+              "ACTIVE",
+              "ENDED",
+              "FAILED"
+            ]
+          },
+          "trafficStartTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "trafficEndTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "trafficProfileReference": {
+            "$ref": "#/components/schemas/TrafficProfileReference"
+          },
+          "trafficParameters": {
+            "$ref": "#/components/schemas/TrafficParameters"
+          },
+          "trafficMonitoring": {
+            "$ref": "#/components/schemas/TrafficMonitoring"
+          }
+        }
+      },
+      "TrafficMonitoring": {
+        "type": "object",
+        "properties": {
+          "estimatedTotalCallCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "callIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "callCreatedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastUpdateTimestamp": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "TrafficParameters": {
+        "type": "object",
+        "properties": {
+          "sipEndpointId": {
+            "type": "string"
+          },
+          "mediaEndpointId": {
+            "type": "string"
+          },
+          "callProfileSnapshot": {
+            "$ref": "#/components/schemas/CallGenerationProfile"
+          },
+          "callDurationInSeconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trafficDurationInSeconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trafficProfileType": {
+            "$ref": "#/components/schemas/TrafficProfileType"
+          },
+          "linearRateTrafficParameters": {
+            "$ref": "#/components/schemas/LinearRateTrafficParameters"
+          },
+          "burstTrafficParameters": {
+            "$ref": "#/components/schemas/BurstTrafficParameters"
+          }
+        }
+      },
+      "TrafficProfileReference": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "profileType": {
+            "$ref": "#/components/schemas/TrafficProfileType"
+          }
+        }
+      },
+      "MGSConfiguration": {
+        "type": "object",
+        "properties": {
+          "simulatorInstanceId": {
+            "type": "string"
+          },
+          "simulatorInstanceName": {
+            "type": "string"
+          },
+          "callHandlingProfileId": {
+            "type": "string"
+          },
+          "sipEndpointId": {
+            "type": "string"
+          },
+          "mediaEndpointId": {
+            "type": "string"
+          }
+        }
+      },
+      "StartCallRequest": {
+        "type": "object",
+        "properties": {
+          "simulatorInstanceId": {
+            "type": "string"
+          },
+          "callGenerationProfileId": {
+            "type": "string"
+          }
+        }
+      },
+      "AudioSessionInfo": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "recordedFilePath": {
+            "type": "string"
+          }
+        }
+      },
+      "CallExtendedStateV2": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "simulatorInstanceId": {
+            "type": "string"
+          },
+          "callState": {
+            "type": "string",
+            "enum": [
+              "CREATED",
+              "PROCEEDING",
+              "ACTIVE",
+              "ENDING",
+              "ENDED",
+              "CANCELLING",
+              "CANCELLED",
+              "FAILED"
+            ]
+          },
+          "sipSignallingInfo": {
+            "$ref": "#/components/schemas/SipSignallingInfoV1"
+          },
+          "callType": {
+            "type": "string",
+            "enum": [
+              "SINGLE",
+              "TRAFFIC"
+            ]
+          },
+          "callGenerationProfileReference": {
+            "$ref": "#/components/schemas/CallGenerationProfileReference"
+          },
+          "callParameters": {
+            "$ref": "#/components/schemas/CallParameters"
+          },
+          "mediaInfo": {
+            "$ref": "#/components/schemas/MediaInfo"
+          },
+          "inactiveMediaInfoList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaInfo"
+            }
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "createdTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "activeTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endedTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CallGenerationProfileReference": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "gatewayProfileType": {
+            "$ref": "#/components/schemas/GatewayProfileType"
+          }
+        }
+      },
+      "CallInformationHeaderParameters": {
+        "type": "object",
+        "properties": {
+          "callInfoHeaderFormat": {
+            "type": "string",
+            "enum": [
+              "SINGLE_HEADER",
+              "ONE_HEADER_PER_VALUE"
+            ]
+          },
+          "callInfoHeaderList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CallInfoHeader"
+            }
+          }
+        }
+      },
+      "CallInformationParameters": {
+        "type": "object",
+        "properties": {
+          "geolocationHeaderParameters": {
+            "$ref": "#/components/schemas/GeolocationHeaderParameters"
+          },
+          "callInformationHeaderParameters": {
+            "$ref": "#/components/schemas/CallInformationHeaderParameters"
+          }
+        }
+      },
+      "CallParameters": {
+        "type": "object",
+        "properties": {
+          "sipEndpointId": {
+            "type": "string"
+          },
+          "userAgent": {
+            "type": "string"
+          },
+          "callerIdentificationParameters": {
+            "$ref": "#/components/schemas/CallerIdentificationParameters"
+          },
+          "calleeIdentificationParameters": {
+            "$ref": "#/components/schemas/CalleeIdentificationParameters"
+          },
+          "routingParameters": {
+            "$ref": "#/components/schemas/RoutingParameters"
+          },
+          "callInformationParameters": {
+            "$ref": "#/components/schemas/CallInformationParameters"
+          },
+          "transportParameters": {
+            "$ref": "#/components/schemas/TransportParameters"
+          },
+          "customSipHeaderParameters": {
+            "$ref": "#/components/schemas/CustomSipHeaderParameters"
+          },
+          "mediaParameters": {
+            "$ref": "#/components/schemas/MediaParameters"
+          }
+        }
+      },
+      "CalleeIdentificationParameters": {
+        "type": "object",
+        "properties": {
+          "toUri": {
+            "type": "string"
+          }
+        }
+      },
+      "CallerIdentificationParameters": {
+        "type": "object",
+        "properties": {
+          "fromUri": {
+            "type": "string"
+          },
+          "paiUri": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CustomSipHeaderParameters": {
+        "type": "object",
+        "properties": {
+          "customSipHeaderSet": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomSipHeader"
+            }
+          }
+        }
+      },
+      "GeolocationHeaderParameters": {
+        "type": "object",
+        "properties": {
+          "geolocationHeaderFormat": {
+            "type": "string",
+            "enum": [
+              "SINGLE_HEADER",
+              "ONE_HEADER_PER_VALUE"
+            ]
+          },
+          "geolocationHeaderList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeolocationHeader"
+            }
+          }
+        }
+      },
+      "MediaInfo": {
+        "type": "object",
+        "properties": {
+          "sdpOffer": {
+            "type": "string"
+          },
+          "sdpAnswer": {
+            "type": "string"
+          },
+          "audioSessionInfo": {
+            "$ref": "#/components/schemas/AudioSessionInfo"
+          }
+        }
+      },
+      "MediaParameters": {
+        "type": "object",
+        "properties": {
+          "voiceEnabled": {
+            "type": "boolean"
+          },
+          "mediaEndpointId": {
+            "type": "string"
+          },
+          "mediaFile": {
+            "$ref": "#/components/schemas/MediaFile"
+          }
+        }
+      },
+      "RoutingParameters": {
+        "type": "object",
+        "properties": {
+          "localPolicyOutboundProxyOverrideEnabled": {
+            "type": "boolean"
+          },
+          "localPolicyOutboundProxyUri": {
+            "type": "string"
+          },
+          "requestUri": {
+            "type": "string"
+          },
+          "routeSet": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SipDialogInfo": {
+        "type": "object",
+        "properties": {
+          "callId": {
+            "type": "string"
+          },
+          "fromTag": {
+            "type": "string"
+          },
+          "toTag": {
+            "type": "string"
+          },
+          "remoteTarget": {
+            "type": "string"
+          },
+          "secure": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SipSignallingInfoV1": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "CREATED",
+              "PROCEEDING",
+              "ACTIVE",
+              "ENDING",
+              "ENDED",
+              "CANCELLING",
+              "CANCELLED",
+              "FAILED"
+            ]
+          },
+          "sipDialogInfo": {
+            "$ref": "#/components/schemas/SipDialogInfo"
+          },
+          "pendingState": {
+            "$ref": "#/components/schemas/SipSignallingPendingStateV1"
+          }
+        }
+      },
+      "SipSignallingPendingStateV1": {
+        "type": "object",
+        "properties": {
+          "nextState": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "CREATED",
+              "PROCEEDING",
+              "ACTIVE",
+              "ENDING",
+              "ENDED",
+              "CANCELLING",
+              "CANCELLED",
+              "FAILED"
+            ]
+          },
+          "remainingStateConditions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "RECEIVED_INVITE_1XX",
+                "RECEIVED_CANCEL_2XX",
+                "RECEIVED_INVITE_3XX_6XX"
+              ]
+            }
+          }
+        }
+      },
+      "TransportParameters": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "type": "string",
+            "enum": [
+              "sip",
+              "sips"
+            ]
+          },
+          "transportProtocol": {
+            "type": "string",
+            "enum": [
+              "UDP",
+              "TCP",
+              "TLS"
+            ]
+          }
+        }
+      },
+      "InfoResponse": {
+        "type": "object",
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          },
+          "artifactVersion": {
+            "type": "string"
+          },
+          "groupId": {
+            "type": "string"
+          },
+          "buildNumber": {
+            "type": "string"
+          },
+          "healthPath": {
+            "type": "string"
+          },
+          "openApiPath": {
+            "type": "string"
+          },
+          "userManualPath": {
+            "type": "string"
+          },
+          "postmanCollectionPath": {
+            "type": "string"
+          },
+          "simulationCreditsUrl": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+# runs tests for push-events, for pull requests and using cron schedule:
+name: Run Robot Framework Tests
+on:
+    push:
+        # runs tests for commits pushed to master
+        branches:
+            - master
+jobs:
+    run_tests:
+        runs-on: ubuntu-20.04
+        steps:
+            # checkout code from a repository
+            - uses: actions/checkout@v2
+            # install openvpn 
+            - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
+            - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
+            - run: sudo apt-get install ppp
+            - run: ls -a forticlientsslvpn/64bit/helper/ #../../../../../opt #/forticlient #forticlient-sslvpn/64bit/helper/setup
+            - run: ./forticlientsslvpn/64bit/helper/setup.linux.sh
+            # - run: ./forticlientsslvpn/64bit/forticlientsslvpn_cli --server serveraddress:port --vpnuser username
+            # - run: sudo chown root:root ./forti-vpn.sh
+            # - run: sudo chmod 600 ./forti-vpn.sh
+            # - run: sudo chmod +x ./forti-vpn.sh
+            # - run: wget https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_7.0.0.0018_amd64.deb
+            # - run: sudo apt install ./forticlient_vpn_*_amd64.deb
+            # - run: sudo apt-get install ppp expect
+
+            # - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
+            # - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
+            # - run: sudo apt-get install ppp
+            # - run: ls -a #../../../../../bin #/forticlient #forticlient-sslvpn/64bit/helper/setup
+
+            # - run: wget -O - https://repo.fortinet.com/repo/6.4/ubuntu/DEB-GPG-KEY | sudo apt-key add -
+            # - run: sudo apt-get install software-properties-common
+            # - run: sudo add-apt-repository "deb [arch=amd64] https://repo.fortinet.com/repo/6.4/ubuntu/ /bionic multiverse"
+            # - run: sudo apt-get update
+            # - run: sudo apt install forticlient
+            # - run: ls -a ../../../../../bin #/forticlient #forticlient-sslvpn/64bit/helper/ setup
+
+            # - run: sudo chown root:root ./forti-vpn.sh
+            # - run: sudo chmod 600 ./forti-vpn.sh
+            # - run: sudo chmod +x ./forti-vpn.sh
+
+            # # create folder for test reports
+            # - name: Create folder for reports
+            #   run: mkdir reports
+
+            # - name: Copy redirect to reports
+            #   run: cp helpers/404.html reports/404.html
+
+            # - name: Set up Python 3.9
+            #   uses: actions/setup-python@v2
+            #   with:
+            #       python-version: 3.9
+            # - name: Install dependencies
+            #   run: |
+            #       python -m pip install --upgrade pip
+            # #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            # - run: bash setup_venv.sh
+            # - run: export ROBOT_OPTIONS="--variable DINOSAUR:Achillobator --variable NOT_DINOSAUR:kissa"
+            # # run Robot Framework tests inside Docker container
+            # - name: Run Robot Framework Tests
+            #   run: venv/bin/python -m robot -d reports/ tests/
+
+            # - name: Upload reports
+            #   uses: actions/upload-artifact@v1
+            #   if: always()
+            #   with:
+            #       name: reports
+            #       # set path to Robot Framework results reports. Exclude dummy file that is needed because of ppodgorsek image priviledges.
+            #       path: ${{ github.workspace }}/reports
+
+            # - name: Deploy to pages
+            #   if: always()
+            #   uses: peaceiris/actions-gh-pages@v3.7.3
+            #   with:
+            #       github_token: ${{ secrets.GITHUB_TOKEN }}
+            #       publish_branch: gh-pages
+            #       publish_dir: reports

@@ -1,0 +1,10 @@
+.venv
+.idea
+.git
+venv
+
+poetry.lock
+pyproject.toml
+
+# mgs-client/
+# psap-simulator-client/

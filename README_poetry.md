@@ -1,12 +1,9 @@
+To set up environment fo local use run from the projects root dir:
+
+
 # Automation Framework to test VESTA Router
 
 ## Setup local env
-### To setup env in Windows run following PowerShell script:
-```commandline
-setup_venv.ps1
-```
-
-## Manual steps:
 ### 1. Install poetry:
 Linux
 ```bash
@@ -17,44 +14,38 @@ Windows PowerShell
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
 ```
 
-### 2. Create venv and activate it:
+### 2. Run poetry install script:
 
-Windows
 ```bash
-python -m venv venv
-venv\Scripts\Activate.ps1''
+poetry install
 ```
-Linux
+
+### 3. Build Multimedia Gateway Simulator and Call Handler Emulator clients:
+
 ```bash
+poetry run openapi-python-client generate --path open_api_clients_json/mgs_openapi.json
+poetry run openapi-python-client generate --path open_api_clients_json/psap_simulator_openapi.json
+```
+
+### 4. Add MGS and CHE clients to your .venv:
+
+```bash
+poetry add ./mgs-client
+poetry add ./psap-simulator-client
+```
 python -m venv venv
+
+venv\Scripts\Activate.ps1
+
 source venv/bin/activate
-```
 
-### 3. Install requirements:
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Build Multimedia Gateway Simulator and Call Handler Emulator clients:
-
-```bash
 openapi-python-client generate --path open_api_clients_json/mgs_openapi.json
 openapi-python-client generate --path open_api_clients_json/psap_simulator_openapi.json
-```
 
-### 5. Build wheel and install it to in your venv:
 
-```bash
 cd .\mgs-client\
 poetry build -f wheel
-Get-ChildItem ".\dist\" |
-Foreach-Object {
-    pip install .\dist\$_
-}
 cd ..\psap-simulator-client\
 poetry build -f wheel
-Get-ChildItem ".\dist\" |
-Foreach-Object {
-    pip install .\dist\$_
-}
-```
+cd ..
+pip install .\mgs-client\dist\mgs_client-22.0.65-py3-none-any.whl
