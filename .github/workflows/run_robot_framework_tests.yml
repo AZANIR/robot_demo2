@@ -18,7 +18,7 @@ jobs:
             - name: Copy redirect to reports
               run: cp helpers/404.html reports/404.html
             # install openvpn
-            - run: apt-get install wget curl -y
+            - run: sudo apt-get install wget curl -y
             - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: sudo apt-get install ppp iproute2 -y
