@@ -1,17 +1,27 @@
 # This file contains methods for MGS
 import json
+import os
 import re
+import sys
+
 from mgs_client import AuthenticatedClient
-from mgs_client.models import *
+from mgs_client.api.call_generation_profile_rest_controller import get_all_call_profiles, create_call_profile, \
+    get_call_profile, delete_call_profile
 from mgs_client.api.call_rest_controller import call_status_all_1, create_call_1, call_termination_1, call_status_1, \
     delete_call
 from mgs_client.api.mgs_configuration_rest_controller import get_all_mgs_configurations
-from mgs_client.api.call_generation_profile_rest_controller import get_all_call_profiles, create_call_profile, \
-    get_call_profile, delete_call_profile
+from mgs_client.models import *
 from mgs_client.types import Response, UNSET, Unset
-from config.default import MGS_URL, TOKEN, MGS_CONFIGURATION_NAME, MGS_CALL_PROFILE_NAME
+from config.default import MGS_URL, MGS_CONFIGURATION_NAME, MGS_CALL_PROFILE_NAME
+ROOT_DIR = os.path.abspath(os.curdir)
+sys.path.append(ROOT_DIR)
 
-client = AuthenticatedClient(base_url=MGS_URL, token=TOKEN)
+client: AuthenticatedClient
+
+
+def build_mgs_client(access_token: str):
+    global client
+    client = AuthenticatedClient(base_url=MGS_URL, token=access_token)
 
 
 def get_all_active_calls_mgs():

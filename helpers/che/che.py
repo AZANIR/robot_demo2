@@ -1,6 +1,7 @@
 # This file contains methods for CHE
 import json
 import re
+
 from psap_simulator_client import AuthenticatedClient
 from psap_simulator_client.api.call_handling_profile_rest_controller import update_call_handling_profile
 from psap_simulator_client.api.call_handling_rest_controller import get_all_calls, get_call, \
@@ -8,9 +9,14 @@ from psap_simulator_client.api.call_handling_rest_controller import get_all_call
 from psap_simulator_client.models import CallExtendedState, CallExtendedStateCallStatus, CallHandlingProfile
 from psap_simulator_client.types import Response
 
-from config.default import CHE_URL, TOKEN, SIP_ENDPOINT_ID
+from config.default import CHE_URL, SIP_ENDPOINT_ID
 
-client = AuthenticatedClient(base_url=CHE_URL, token=TOKEN)
+client: AuthenticatedClient
+
+
+def build_che_client(access_token: str):
+    global client
+    client = AuthenticatedClient(base_url=CHE_URL, token=access_token)
 
 
 def get_all_calls_che():
@@ -154,9 +160,9 @@ def get_call_phone_by_call_id_che(call_id: str):
 
 def get_call_position_by_call_id_che(call_id: str):
     """ Get call position from CHE """
-    location = re.search(r'(?<=<pos>).*?(?=</pos>)', get_call_original_invite_by_call_id_che(call_id))
+    location = re.search(r'.*?pos>(.*?)</.*?pos>', get_call_original_invite_by_call_id_che(call_id))
     if location:
-        return location.group(0)
+        return location.group(1)
     else:
         return "Position is not found!"
 
@@ -164,17 +170,18 @@ def get_call_position_by_call_id_che(call_id: str):
 def get_call_location_by_call_id_che(call_id: str):
     """ Get call location from CHE """
     arr = []
-    reg_address = r'<country[\w\W]*?(?=</civicAddress>)'
-    reg_arr = [r'(?<=<country>).*?(?=</country>)', r'(?<=<A1>).*?(?=</A1>)', r'(?<=<A2>).*?(?=</A2>)',
-               r'(?<=<A3>).*?(?=</A3>)', r'(?<=<RD>).*?(?=</RD>)', r'(?<=<HNO>).*?(?=</HNO>)',
-               r'(?<=<PC>).*?(?=</PC>)', r'(?<=<NAM>).*?(?=</NAM>)', r'(?<=\">)\w+(?=</COMM)',
-               r'(?<=\">)\w+(?=</ESN>)']
-    pre_address = re.search(reg_address, get_call_original_invite_by_call_id_che(call_id))
+    reg_address = r'[civicAddress]'
+    reg_arr = [r'.*?country.*?>(.*?)</.*?country>', r'.*?A1.*?>(.*?)</.*?A1>', r'.*?A2.*?>(.*?)</.*?A2>',
+               r'.*?A3.*?>(.*?)</.*?A3>', r'.*?RD.*?>(.*?)</.*?RD>', r'.*?HNO.*?>(.*?)</.*?HNO>',
+               r'.*?PC.*?>(.*?)</.*?PC>', r'.*?NAM.*?>(.*?)</.*?NAM>', r'.*?COMM.*?>(.*?)</.*?COMM>',
+               r'.*?ESN.*?>(.*?)</.*?ESN>']
+    call_original_invite = get_call_original_invite_by_call_id_che(call_id)
+    pre_address = re.search(reg_address, call_original_invite)
     if pre_address:
         for element in reg_arr:
-            search_result = re.search(element, pre_address.group(0))
+            search_result = re.search(element, call_original_invite)
             if search_result:
-                arr.append(search_result.group(0))
+                arr.append(search_result.group(1))
         return ', '.join(arr)
     else:
         return "Location is not found!"

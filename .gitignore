@@ -6,5 +6,5 @@ venv
 poetry.lock
 pyproject.toml
 
-# mgs-client/
-# psap-simulator-client/
+#mgs-client/
+#psap-simulator-client/
