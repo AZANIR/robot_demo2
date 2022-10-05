@@ -40,6 +40,15 @@ fi
 if [ "$1" != "2" ]; then
 	echo "begin setup at $base..." >> "$inlog"
 	more "$base/License.txt"
+	echo -n "Do you agree with this license ?[Yes/No]"
+	read ans
+	yn= 'Y'
+	if [ "$yn" != "YES" -a "$yn" != "Y" ]; then
+		touch "$base/.nolicense"
+		chmod a+w "$base/.nolicense"
+		echo "Do not agree with this license, aborting..."
+		exit 0
+	fi
 fi
 
 if [ "$sys" = "Linux" ]; then
