@@ -18,7 +18,7 @@ jobs:
             - name: Copy redirect to reports
               run: cp helpers/404.html reports/404.html
             # install openvpn
-            - run: sudo apt-get install wget curl -y
+            - run: sudo apt-get install wget curl expect -y
             - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: sudo apt-get install ppp iproute2 -y
@@ -30,7 +30,7 @@ jobs:
             - run: sudo chown root:root ./run_vpn.sh
             - run: sudo chmod 600 ./run_vpn.sh
             - run: sudo chmod +x ./run_vpn.sh
-            - run: ./run_vpn.sh -Y -d
+            - run: sudo ./run_vpn.sh -Y -d
             # - run: ./forticlientsslvpn/64bit/forticlientsslvpn_cli --server serveraddress:port --vpnuser username
             # - run: sudo chown root:root ./forti-vpn.sh
             # - run: sudo chmod 600 ./forti-vpn.sh
