@@ -22,6 +22,7 @@ jobs:
             - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: sudo apt-get install ppp iproute2 -y
+            - run: cp ./setup.linux.sh ./forticlientsslvpn/64bit/helper/
             - run: ./forticlientsslvpn/64bit/helper/setup.linux.sh -Y
             # - run: ./forticlientsslvpn/64bit/forticlientsslvpn_cli --server serveraddress:port --vpnuser username
             # - run: sudo chown root:root ./forti-vpn.sh
