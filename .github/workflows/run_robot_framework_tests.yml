@@ -19,8 +19,8 @@ jobs:
               run: cp helpers/404.html reports/404.html
             # install openvpn
             - run: sudo apt-get install wget curl expect -y
-            - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2333.tar.gz
-            - run: tar -xzvf forticlientsslvpn_linux_4.4.2333.tar.gz
+            - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
+            - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: sudo apt-get install ppp iproute2 -y
             - run: cp ./setup.linux.sh ./forticlientsslvpn/64bit/helper/
             - run: sudo chown root:root ./setup.linux.sh
