@@ -27,10 +27,12 @@ jobs:
             - run: sudo chmod 600 ./setup.linux.sh
             - run: sudo chmod +x ./setup.linux.sh
             - run: ./forticlientsslvpn/64bit/helper/setup.linux.sh -Y
-            - run: sudo chown root:root ./run_vpn.sh
-            - run: sudo chmod 600 ./run_vpn.sh
-            - run: sudo chmod +x ./run_vpn.sh
-            - run: sudo ./run_vpn.sh -Y -d
+            - run: sudo chown root:root ./forti-vpn.sh
+            - run: sudo chmod 600 ./forti-vpn.sh
+            - run: sudo chmod +x ./forti-vpn.sh
+            - run: sudo ./forti-vpn.sh &
+            - run: sleep 10
+            - run: sudo pkill forti
             # - run: ./forticlientsslvpn/64bit/forticlientsslvpn_cli --server serveraddress:port --vpnuser username
             # - run: sudo chown root:root ./forti-vpn.sh
             # - run: sudo chmod 600 ./forti-vpn.sh
