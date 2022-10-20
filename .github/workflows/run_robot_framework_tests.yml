@@ -26,8 +26,6 @@ jobs:
                   python -m pip install --upgrade pip
 #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
             - run: bash setup_venv.sh
-            - run: export CLIENT_SECRET = ${{ secrets.CLIENT_SECRET }}
-            - run: echo CLIENT_SECRET
 
               # install openvpn
             - run: sudo apt-get install wget curl expect -y
@@ -45,6 +43,8 @@ jobs:
             - run: sudo ./forti-vpn.sh &
             # run Robot Framework tests inside Docker container
             - name: Run Robot Framework Tests
+              env:
+                  CLIENT_SECRET: ${{ CLIENT_SECRET}}
               run: venv/bin/python -m test.py # venv/bin/python -m robot -d reports/ tests/
 
 #            - name: Upload reports
