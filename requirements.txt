@@ -1,3 +1,4 @@
 openapi-python-client>=0.11.4
 robotframework>=5.0.1
 robotframework-requests>=0.9
+python-dotenv>=0.21.0
