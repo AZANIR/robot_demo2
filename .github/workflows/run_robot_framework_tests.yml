@@ -63,5 +63,6 @@ jobs:
 #                  github_token: ${{ secrets.GITHUB_TOKEN }}
 #                  publish_branch: gh-pages
 #                  publish_dir: reports
-            - run: sleep 10
-            - run: sudo pkill forti
+            - name: Stop Forti VPN
+              if: always()
+              run: sleep 10 && sudo pkill forti
