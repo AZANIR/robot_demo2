@@ -29,7 +29,7 @@ jobs:
 
               # install openvpn
             - name: Install openvpn
-            - run: bash setup_vpn.sh
+              run: bash setup_vpn.sh
             # run Robot Framework tests inside Docker container
             - name: Run Robot Framework Tests
               env:
