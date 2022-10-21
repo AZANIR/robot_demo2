@@ -1,10 +1,11 @@
 sudo apt-get install wget curl expect -y
 #ping 8.8.8.8
 sudo su
-apt-get update
-apt-get install ppp net-tools -y
-cd ../../../../../opt/
-ls -a
+sudo apt-get update
+sudo apt-get install ppp net-tools -y
+cd ../../../../../
+ls
+
 #wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
 #tar zxvf forticlientsslvpn_linux_4.4.2328.tar.gz
 uname -m
