@@ -7,4 +7,3 @@ tar zxvf forticlientsslvpn_linux_4.4.2328.tar.gz
 sudo chown root:root ./forti-vpn.sh
 sudo chmod 600 ./forti-vpn.sh
 sudo chmod +x ./forti-vpn.sh
-sudo ./forti-vpn.sh &
