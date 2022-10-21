@@ -1,6 +1,6 @@
 sudo apt-get install wget curl expect -y
 sudo apt-get install openfortivpn
-find $HOME -type d -name "forticlientsslvpm"
+find $HOME -type d -name "openfortivpn"
 echo 1
 ls
 echo 2
