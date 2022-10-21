@@ -1,29 +1,15 @@
 sudo apt-get install wget curl expect -y
-ping 8.8.8.8
-sudo su
-apt update && apt install ppp net-tools
-cd $HOME
-cd opt
+#ping 8.8.8.8
+#sudo su
+#apt update && apt install ppp net-tools
+#cd $HOME
+#cd opt
 #cd ../../../../../opt/
 
-#sudo apt-get install openfortivpn
-#find $HOME -type d -name "openfortivpn"
-#echo 1
-#ls
-#echo 2
-#ls ../
-#echo 3
-#ls ../../
-#echo 4
-#ls ../../../
-#echo 5
-#ls ../../../../
-#echo 6
-##ls ../../../../../
-#cd $HOME
-#sudo apt-get install openfortivpn -y
 #wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
-#tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
+#tar zxvf forticlientsslvpn_linux_4.4.2328.tar.gz
+uname -m
+#cd forticlientsslvpn/64bit/
 #sudo apt-get install ppp iproute2 -y
 #cp ./setup.linux.sh ./forticlientsslvpn/64bit/helper/
 #sudo chown root:root ./setup.linux.sh
