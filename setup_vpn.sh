@@ -13,7 +13,8 @@ echo 5
 ls ../../../../
 echo 6
 ls ../../../../../
-
+cd $HOME
+sudo apt-get install openfortivpn -y
 #wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
 #tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
 #sudo apt-get install ppp iproute2 -y
