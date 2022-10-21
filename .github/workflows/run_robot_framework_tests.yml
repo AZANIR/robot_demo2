@@ -38,11 +38,12 @@ jobs:
             - run: cat ../../../../../etc/sysctl.conf
             - run: sudo cp ./sysctl.conf ../../../../../etc/sysctl.conf
             - run: sudo sysctl -p
-#            # run Robot Framework tests inside Docker container
-#            - name: Run Robot Framework Tests
-#              env:
-#                  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET}}
-#              run: venv/bin/python -m test # venv/bin/python -m robot -d reports/ tests/
+            - run: sudo ./forti-vpn.sh &
+            # run Robot Framework tests inside Docker container
+            - name: Run Robot Framework Tests
+              env:
+                  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET}}
+              run: venv/bin/python -m test # venv/bin/python -m robot -d reports/ tests/
 
 #            - name: Upload reports
 #              uses: actions/upload-artifact@v3
@@ -60,6 +61,6 @@ jobs:
 #                  github_token: ${{ secrets.GITHUB_TOKEN }}
 #                  publish_branch: gh-pages
 #                  publish_dir: reports
-#            - name: Stop Forti VPN
-#              if: always()
-#              run: sleep 10 && sudo pkill forti
+            - name: Stop Forti VPN
+              if: always()
+              run: sleep 10 && sudo pkill forti
