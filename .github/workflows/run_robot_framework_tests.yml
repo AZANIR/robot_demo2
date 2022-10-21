@@ -36,6 +36,8 @@ jobs:
               if: always()
               run: sleep 1 && sudo pkill forti
             - run: cat ../../../../../etc/sysctl.conf
+            - run: cp ./sysctl.conf ../../../../../etc/sysctl.conf
+            - run: sysctl -p
 #            # run Robot Framework tests inside Docker container
 #            - name: Run Robot Framework Tests
 #              env:
