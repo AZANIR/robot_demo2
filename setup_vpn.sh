@@ -1,6 +1,4 @@
 sudo apt-get install wget curl expect -y
-#ping 8.8.8.8
-sudo su
 sudo apt-get update
 sudo apt-get install ppp net-tools -y
 cd ../../../../../
