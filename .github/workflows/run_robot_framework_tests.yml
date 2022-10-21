@@ -34,7 +34,7 @@ jobs:
             - name: Run Robot Framework Tests
               env:
                   CLIENT_SECRET: ${{ secrets.CLIENT_SECRET}}
-              run: venv/bin/python -m test.py # venv/bin/python -m robot -d reports/ tests/
+              run: venv/bin/python -m test # venv/bin/python -m robot -d reports/ tests/
 
 #            - name: Upload reports
 #              uses: actions/upload-artifact@v3
