@@ -1,6 +1,19 @@
 sudo apt-get install wget curl expect -y
 sudo apt-get install openfortivpn
-ls ../../../../../opt
+find $HOME -type d -name "forticlientsslvpm"
+echo 1
+ls
+echo 2
+ls ../
+echo 3
+ls ../../
+echo 4
+ls ../../../
+echo 5
+ls ../../../../
+echo 6
+ls ../../../../../
+
 #wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
 #tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
 #sudo apt-get install ppp iproute2 -y
