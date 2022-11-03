@@ -33,8 +33,7 @@ jobs:
                   sudo apt-get install openfortivpn -y
             - run: ls ../../../../../etc/openfortivpn/config
             - run: cat ../../../../../etc/openfortivpn/config
-            - run: sudo cp ./config.txt ../../../../../etc/openfortivpn/config
-            - run: sudo openfortivpn &
+            - run: sudo openfortivpn 65.229.28.150:4443 -u lmayevskyi --trusted-cert d04a0c9d55c42e37f83637af03e339b3dcf325cfa5a4f506b84ba31f744342a9 &
 #              # install openvpn
 #            - name: Install openvpn
 #              run: bash setup_vpn.sh
