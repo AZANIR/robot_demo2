@@ -34,7 +34,7 @@ jobs:
             - run: ls ../../../../../etc/openfortivpn/config
             - run: cat ../../../../../etc/openfortivpn/config
             - run: sudo cp ./config.txt ../../../../../etc/openfortivpn/config
-            - run: sudo openfortivpn -c ../../../../../etc/openfortivpn/config &
+            - run: sudo openfortivpn &
 #              # install openvpn
 #            - name: Install openvpn
 #              run: bash setup_vpn.sh
