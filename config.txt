@@ -4,4 +4,4 @@ host = 65.229.28.150 # change this according to your need
 port = 4443                   # update if needed
 username = lmayevskyi            # update with your username
 password = ct}DH>!3jW~8R*2<           # update with your password
-trusted-cert = d04a0c9d55c42e37f83637af03e339b3dcf325cfa5a4f506b84ba31f744342a9  # change this according to your need
+#trusted-cert = d04a0c9d55c42e37f83637af03e339b3dcf325cfa5a4f506b84ba31f744342a9  # change this according to your need
