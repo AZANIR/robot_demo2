@@ -26,19 +26,24 @@ jobs:
                   python -m pip install --upgrade pip
 #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
             - run: bash setup_venv.sh
-
-              # install openvpn
-            - name: Install openvpn
-              run: bash setup_vpn.sh
-              # Run fortiVPN
-            - run: sudo ./forti-vpn.sh &
-            - name: Stop Forti VPN
-              if: always()
-              run: sleep 1 && sudo pkill forti
-            - run: cat ../../../../../etc/sysctl.conf
-            - run: sudo cp ./sysctl.conf ../../../../../etc/sysctl.conf
-            - run: sudo sysctl -p
-            - run: sudo ./forti-vpn.sh &
+            # install openfortivpn
+            - name: Install openfortivpn
+              run: |
+                  sudo apt-get update -y
+                  sudo apt-get install openfortivpn -y
+            - run: ls ../../../../../etc/
+#              # install openvpn
+#            - name: Install openvpn
+#              run: bash setup_vpn.sh
+#              # Run fortiVPN
+#            - run: sudo ./forti-vpn.sh &
+#            - name: Stop Forti VPN
+#              if: always()
+#              run: sleep 1 && sudo pkill forti
+#            - run: cat ../../../../../etc/sysctl.conf
+#            - run: sudo cp ./sysctl.conf ../../../../../etc/sysctl.conf
+#            - run: sudo sysctl -p
+#            - run: sudo ./forti-vpn.sh &
             # run Robot Framework tests inside Docker container
             - name: Run Robot Framework Tests
               env:
