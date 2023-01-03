@@ -26,15 +26,15 @@ jobs:
                   python -m pip install --upgrade pip
 #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
             # Setup environment
-            - run: sudo apt-get update # && \
-#                  apt install -y -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
-#                  ca-certificates \
-#                  expect \
-#                  net-tools \
-#                  iproute2 \
-#                  ipppd \
-#                  iptables \
-#                  wget \
+            - run: sudo apt-get update  && \
+                  apt-get install -y -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
+                  ca-certificates \
+                  expect \
+                  net-tools \
+                  iproute2 \
+                  ipppd \
+                  iptables \
+                  wget
 #                  && apt clean -q && apt autoremove --purge \
 #                  && rm -rf /var/lib/apt/lists/*
 #            - run: sudo apt update && apt install -y \
