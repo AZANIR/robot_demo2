@@ -26,7 +26,7 @@ jobs:
                   python -m pip install --upgrade pip
 #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
             # Setup environment
-            - run: apt-get update && \
+            - run: sudo apt-get update && \
                   apt-get install -y -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
                   ca-certificates \
                   expect \
