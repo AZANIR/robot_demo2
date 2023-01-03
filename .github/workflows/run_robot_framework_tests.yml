@@ -26,8 +26,8 @@ jobs:
                   python -m pip install --upgrade pip
 #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
             # Setup environment
-            - run: sudo apt-get update && \
-                  apt-get install -y -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
+            - run: sudo apt update && \
+                  apt install -y -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
                   ca-certificates \
                   expect \
                   net-tools \
@@ -35,11 +35,11 @@ jobs:
                   ipppd \
                   iptables \
                   wget \
-                  && apt-get clean -q && apt-get autoremove --purge \
+                  && apt clean -q && apt autoremove --purge \
                   && rm -rf /var/lib/apt/lists/*
-            - run: apt-get update && apt-get install -y \
+            - run: sudo apt update && apt install -y \
                   software-properties-common
-            - run: add-apt-repository universe
+            - run: sudo add-apt-repository universe
             - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
             - run: ./forticlientsslvpn/64bit/helper/setup.linux.sh 2
