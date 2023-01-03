@@ -26,20 +26,40 @@ jobs:
                   python -m pip install --upgrade pip
 #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
             # Setup environment
+            - run: apt-get update && \
+                  apt-get install -y -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
+                  ca-certificates \
+                  expect \
+                  net-tools \
+                  iproute2 \
+                  ipppd \
+                  iptables \
+                  wget \
+                  && apt-get clean -q && apt-get autoremove --purge \
+                  && rm -rf /var/lib/apt/lists/*
+            - run: apt-get update && apt-get install -y \
+                  software-properties-common
+            - run: add-apt-repository universe
+            - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
+            - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
+            - run: ./forticlientsslvpn/64bit/helper/setup.linux.sh 2
             - name: Run Setup_env.sh
               run: bash setup_venv.sh
               # install openvpn
             - name: Install openvpn
               run: bash setup_vpn.sh
               # Run fortiVPN
-            - run: sudo ./forti-vpn.sh &
+            - run: sudo ./forti-vpn.sh & \
+                  chown root:root ./forti-vpn.sh \
+                  chmod 600 ./forti-vpn.sh \
+                  chmod +x ./forti-vpn.sh
 #            - name: Stop Forti VPN
 #              if: always()
 #              run: sleep 1 && sudo pkill forti
 #            - run: cat ../../../../../etc/sysctl.conf
 #            - run: sudo cp ./sysctl.conf ../../../../../etc/sysctl.conf
 #            - run: sudo sysctl -p
-#            - run: sudo ./forti-vpn.sh &
+            - run: sudo ./forti-vpn.sh &
             # run Robot Framework tests inside Docker container
             - name: Run Robot Framework Tests
               env:
