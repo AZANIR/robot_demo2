@@ -9,9 +9,9 @@
 FORTICLIENT_PATH="./forticlientsslvpn/64bit/forticlientsslvpn_cli"
 
 # VPN Credentials
-VPN_HOST="65.229.28.150:4443"
-VPN_USER="lmayevskyi"
-VPN_PASS="ct}DH>!3jW~8R*2<"
+VPN_HOST=""
+VPN_USER=""
+VPN_PASS=""
 
 # --------------------------------------------
 
