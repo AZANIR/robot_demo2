@@ -33,7 +33,7 @@ jobs:
               run: bash setup_vpn.sh
               # Run fortiVPN
             - run: sudo ./forti-vpn.sh &
-            - name: Stop Forti VPN
+#            - name: Stop Forti VPN
 #              if: always()
 #              run: sleep 1 && sudo pkill forti
 #            - run: cat ../../../../../etc/sysctl.conf
