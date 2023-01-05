@@ -26,19 +26,8 @@ jobs:
                   python -m pip install --upgrade pip
 #                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
             # Setup environment
-            - run: sudo apt-get update
-            - run: sudo apt-get install -y -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
-                  ca-certificates \
-                  expect \
-                  net-tools \
-                  iproute2 \
-                  ipppd \
-                  iptables \
-                  wget
-#                  && apt clean -q && apt autoremove --purge \
-#                  && rm -rf /var/lib/apt/lists/*
-#            - run: sudo apt update && apt install -y \
-#                  software-properties-common
+            - name: Install openvpn
+              run: bash setup_vpn.sh
 #            - run: sudo add-apt-repository universe
 #            - run: wget http://cdn.software-mirrors.com/forticlientsslvpn_linux_4.4.2328.tar.gz
 #            - run: tar -xzvf forticlientsslvpn_linux_4.4.2328.tar.gz
