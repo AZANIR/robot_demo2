@@ -48,7 +48,7 @@ jobs:
 #            - run: cat ../../../../../etc/sysctl.conf
 #            - run: sudo cp ./sysctl.conf ../../../../../etc/sysctl.conf
 #            - run: sudo sysctl -p
-            - run: sudo ./forti-vpn.sh &
+#            - run: sudo ./forti-vpn.sh &
             # run Robot Framework tests inside Docker container
             - name: Run Robot Framework Tests
               env:

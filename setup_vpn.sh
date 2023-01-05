@@ -21,3 +21,4 @@ sudo chmod +x ./setup.linux.sh
 sudo chown root:root ./forti-vpn.sh
 sudo chmod 600 ./forti-vpn.sh
 sudo chmod +x ./forti-vpn.sh
+sudo ./forti-vpn.sh &
